@@ -1,0 +1,113 @@
+﻿
+.jobs__item {
+    width:1290px;
+    height: 500px;
+/*    position: relative;*/
+    background-size: cover;
+    background-position: center;
+}
+
+    .jobs__item h5 {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 0 20px;
+        bottom: 20px;
+        text-align: center;
+    }
+
+        .jobs__item h5 a {
+            font-size: 18px;
+            color: #1c1c1c;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 0 10px;
+            background: #ffffff;
+            display: block;
+        }
+
+.jobs__slider .col-lg-3 {
+    max-width: 100%;
+}
+
+.jobs__slider.owl-carousel .owl-nav button {
+    font-size: 18px;
+    color: #1c1c1c;
+    height: 70px;
+    width: 30px;
+    line-height: 70px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    -webkit-transform: translateY(-35px);
+    background: #ffffff;
+}
+
+    .jobs__slider.owl-carousel .owl-nav button.owl-next {
+        left: auto;
+        right: -35px;
+    }
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+.container-company {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.company-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+.company-logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+    .tags span {
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+.location {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.jobs-count {
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+}

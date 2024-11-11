@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style>
+        .container-card {
+            width: 90%;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        p {
+            margin: 5px 0 20px;
+            color: #555;
+        }
+
+        .grid-card {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+            padding: 20px 0px 0px 0px;
+            text-align: center;
+            position: relative;
+        }
+
+            .card .count {
+                font-size: 32px;
+                font-weight: bold;
+                display: block;
+            }
+
+            .card h3 {
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
+            .card a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+                display: inline-block;
+                margin-top: 10px;
+                background-color: rgba(0,0,0,0.2);
+                height:30px;
+                line-height: 30px;
+            }
+            .card a i{
+                line-height: 30px;
+            }
+
+        .excel {
+            background-color: #2ECC71;
+        }
+
+        .table-section {
+            display: flex;
+            gap: 20px;
+        }
+
+        .table {
+            flex: 1;
+        }
+
+            .table h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+            table th, table td {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+
+            table th {
+                background-color: #f7f7f7;
+                font-weight: bold;
+                color: #333;
+            }
+        .breadcrumb {
+            font-size: 18px;
+            color: #333;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Welcome to homepage Admin (QLNS)
+        <div class="breadcrumb">
+            <span id="breadcrumb-path">Home / Tổng quan</span>
+        </div>
+    </div>
+    <div class="container-card">
+        <div class="grid-card">
+            <div class="card" style="background-color: #0095D9;">
+                <span class="count">9</span>
+                <h3>Nhân viên</h3>
+                <a href="#">Danh sách nhân viên&nbsp;&nbsp;<i class="fa-solid fa-angles-right"></i></a>
+            </div>
+
+            <div class="card" style="background-color: #F38E18;">
+                <span class="count">4</span>
+                <h3>Phòng ban</h3>
+                    <a href="#">Danh sách phòng ban</a>
+               
+            </div>
+
+            <div class="card" style="background-color: #F2A41B;">
+                <span class="count">8</span>
+                <h3>Tài khoản người dùng</h3>
+                <a href="#">Danh sách tài khoản</a>
+            </div>
+
+            <div class="card" style="background-color: #E43E3E;">
+                <span class="count">1</span>
+                <h3>Nhân viên nghỉ việc</h3>
+                <a href="#">Danh sách nghỉ việc</a>
+            </div>
+
+            <div class="card excel">
+                <span class="count">Xuất báo cáo</span>
+                <h3>EXCEL</h3>
+                <a href="#">Xuất báo cáo</a>
+            </div>
+
+            <div class="card excel">
+                <h3>EXCEL</h3>
+                <a href="#">Danh sách nhân viên</a>
+            </div>
+
+            <div class="card excel">
+                <h3>EXCEL</h3>
+                <a href="#">Lương nhân viên</a>
+            </div>
+
+            <div class="card excel">
+                <h3>EXCEL</h3>
+                <a href="#">Lịch công tác</a>
+            </div>
+
+            <div class="card excel">
+                <h3>EXCEL</h3>
+                <a href="#">Khen thưởng</a>
+            </div>
+
+            <div class="card excel">
+                <h3>EXCEL</h3>
+                <a href="#">Kỷ luật</a>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="table">
+                <h3>Danh sách phòng ban</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã Phòng</th>
+                            <th>Tên phòng</th>
+                            <th>Ngày tạo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Nội dung bảng -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table">
+                <h3>Danh sách chức vụ</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã chức vụ</th>
+                            <th>Tên chức vụ</th>
+                            <th>Ngày tạo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Nội dung bảng -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

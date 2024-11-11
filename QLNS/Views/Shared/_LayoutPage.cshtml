@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style_layout.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__left">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        <div class="header__top__right__social">
+                            <a href="https://www.facebook.com/narizmusicrl/"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://twitter.com/GHRWX1"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                        <div class="header__top__right__language">
+                            <img src="https://media.istockphoto.com/id/864417828/vi/vec-to/c%E1%BB%9D-vi%E1%BB%87t-nam.jpg?s=612x612&w=0&k=20&c=4wqSdySA6JkSO6Xw6m4255maL3mqQx4m0tTH3Q14u_U=" alt="logo_VietNam" width="20">
+                            <div> Tiếng Việt</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href="#">Tiếng Việt</a></li>
+                                <li><a href="#">Tiếng Anh</a></li>
+                            </ul>
+                        </div>
+                        <div class="header__top__right__auth">
+                            <a href="@Url.Action("DangNhap", "TaiKhoan")"><i class="fa fa-user"></i>Đăng nhập</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

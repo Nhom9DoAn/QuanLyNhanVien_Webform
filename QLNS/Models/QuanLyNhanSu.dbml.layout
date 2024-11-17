@@ -194,7 +194,7 @@
         <classShapeMoniker Id="7ead7831-e6ec-4f47-9297-19ba85e6481c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.9687475 : 23.8381168619792); (6.9687475 : 31.0489005533854); (7.94791916666667 : 31.0489005533854 : JumpStart); (8.11458583333333 : 31.0489005533854 : JumpEnd); (8.21354541666667 : 31.0489005533854 : JumpStart); (8.38021208333334 : 31.0489005533854 : JumpEnd); (9.25 : 31.0489005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.0624975 : 23.8381168619792); (7.0624975 : 31.0489005533854); (7.94791916666667 : 31.0489005533854 : JumpStart); (8.11458583333333 : 31.0489005533854 : JumpEnd); (8.21354541666667 : 31.0489005533854 : JumpStart); (8.38021208333334 : 31.0489005533854 : JumpEnd); (9.25 : 31.0489005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNhanSuDataContext/NhanVien/NhanVien_TaiKhoan" />
       <nodes>
         <classShapeMoniker Id="7ead7831-e6ec-4f47-9297-19ba85e6481c" />
@@ -248,6 +248,19 @@
       <nodes>
         <classShapeMoniker Id="7ead7831-e6ec-4f47-9297-19ba85e6481c" />
         <classShapeMoniker Id="b13727f8-4c74-4052-9307-813036b4bcb7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="edc88aa3-956d-4713-8d97-8df4f8977642" absoluteBounds="4.625, 27.25, 2, 2.5401025390625">
+      <DataClassMoniker Name="/QuanLyNhanSuDataContext/HocVanBangCap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9a478227-8545-4069-b427-5a0c1df35207" absoluteBounds="4.64, 27.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.28124875 : 23.8381168619792); (7.28124875 : 28.919501546224); (7.14583083333333 : 28.919501546224 : JumpStart); (6.97916416666667 : 28.919501546224 : JumpEnd); (6.625 : 28.919501546224)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QuanLyNhanSuDataContext/NhanVien/NhanVien_HocVanBangCap" />
+      <nodes>
+        <classShapeMoniker Id="7ead7831-e6ec-4f47-9297-19ba85e6481c" />
+        <classShapeMoniker Id="edc88aa3-956d-4713-8d97-8df4f8977642" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -18,7 +18,7 @@ namespace QLNS.Controllers.API
         // POST: api/Account/Login
         [HttpPost]
         [Route("Login")]
-        public IHttpActionResult Login([FromBody] Account account)
+        public IHttpActionResult Login([FromBody] AccountModel account)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace QLNS.Controllers.API
         {
             try
             {
-                var accounts = db.TaiKhoans.Select(t => new Account
+                var accounts = db.TaiKhoans.Select(t => new AccountModel
                 {
                     maNV = (int) t.MaNV,
                     tenDN = t.TenDangNhap,
@@ -81,7 +81,7 @@ namespace QLNS.Controllers.API
             {
                 var account = db.TaiKhoans
                     .Where(a => a.MaNV == id)
-                    .Select(t => new Account
+                    .Select(t => new AccountModel
                     {
                         maNV = (int) t.MaNV,
                         tenDN = t.TenDangNhap,
@@ -102,7 +102,7 @@ namespace QLNS.Controllers.API
         }
 
         // PUT: api/TaiKhoan/5
-        public IHttpActionResult PutAccount(int id, Account account)
+        public IHttpActionResult PutAccount(int id, AccountModel account)
         {
             try
             {

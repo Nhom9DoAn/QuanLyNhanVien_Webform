@@ -359,16 +359,6 @@
     <Content Include="Content\js\login.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\Site.css" />
-    <EmbeddedResource Include="Content\swagger-ui\favicon-16x16.png" />
-    <EmbeddedResource Include="Content\swagger-ui\favicon-32x32.png" />
-    <EmbeddedResource Include="Content\swagger-ui\index.html" />
-    <EmbeddedResource Include="Content\swagger-ui\oauth2-redirect.html" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-bundle.js" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-es-bundle-core.js" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-es-bundle.js" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-standalone-preset.js" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui.css" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui.js" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -405,12 +395,6 @@
       <LastGenOutput>QuanLyNhanSu.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-bundle.js.map" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-es-bundle-core.js.map" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-es-bundle.js.map" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui-standalone-preset.js.map" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui.css.map" />
-    <EmbeddedResource Include="Content\swagger-ui\swagger-ui.js.map" />
     <None Include="Models\QuanLyNhanSu.dbml.layout">
       <DependentUpon>QuanLyNhanSu.dbml</DependentUpon>
     </None>
@@ -479,6 +463,17 @@
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\API\AccountController.cs" />
+    <Compile Include="Controllers\API\ChamCongTangCaController.cs" />
+    <Compile Include="Controllers\API\ChucVuController.cs" />
+    <Compile Include="Controllers\API\CongTacController.cs" />
+    <Compile Include="Controllers\API\HocVanDaoTaoController.cs" />
+    <Compile Include="Controllers\API\HopDongController.cs" />
+    <Compile Include="Controllers\API\LichSuPhongBanController.cs" />
+    <Compile Include="Controllers\API\LuongController.cs" />
+    <Compile Include="Controllers\API\NhanThanController.cs" />
+    <Compile Include="Controllers\API\NhanVienController.cs" />
+    <Compile Include="Controllers\API\PhongBanController.cs" />
+    <Compile Include="Controllers\API\TuyenDungUngVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
@@ -492,12 +487,30 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\ChamCongModel.cs" />
+    <Compile Include="Models\ChucVuModel.cs" />
+    <Compile Include="Models\CongTacModel.cs" />
+    <Compile Include="Models\HocVanBangCapModel.cs" />
+    <Compile Include="Models\HopDongModel.cs" />
+    <Compile Include="Models\KhoaDaoTaoModel.cs" />
+    <Compile Include="Models\LichSuLuongModel.cs" />
+    <Compile Include="Models\LichSuPhongBanModel.cs" />
+    <Compile Include="Models\LuongModel.cs" />
+    <Compile Include="Models\NghiPhepModel.cs" />
+    <Compile Include="Models\NhanThanModel.cs" />
+    <Compile Include="Models\NhanVienModel.cs" />
+    <Compile Include="Models\PhongBanModel.cs" />
     <Compile Include="Models\QuanLyNhanSu.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyNhanSu.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\TangCaModel.cs" />
+    <Compile Include="Models\TGDaoTaoModel.cs" />
+    <Compile Include="Models\ThuongPhatModel.cs" />
+    <Compile Include="Models\TuyenDungModel.cs" />
+    <Compile Include="Models\UngVienModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

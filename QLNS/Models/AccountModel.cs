@@ -5,7 +5,7 @@ using System.Web;
 
 namespace QLNS.Models
 {
-    public class Account
+    public class AccountModel
     {
         public int maNV { get; set; }
         public string tenDN { get; set; }

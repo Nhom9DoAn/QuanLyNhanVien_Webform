@@ -1,25 +1,279 @@
 ﻿<!DOCTYPE html>
-
-<html>
+<html lang="vi">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    @*<title>@ViewBag.Title</title>*@
-    <title>Trang chủ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang quản trị</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/style_layout.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header styles */
+        .header__top {
+            background: #fff;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header__top__right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+
+        .header__top__right__social a {
+            color: #6c757d;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+            .header__top__right__social a:hover {
+                color: #0d6efd;
+            }
+
+        .header__top__right__language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+            .header__top__right__language img {
+                margin-right: 5px;
+            }
+
+            .header__top__right__language ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #fff;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+                padding: 5px 0;
+                min-width: 120px;
+                list-style: none;
+            }
+
+            .header__top__right__language:hover ul {
+                display: block;
+            }
+
+            .header__top__right__language ul li a {
+                display: block;
+                padding: 5px 15px;
+                color: #212529;
+                text-decoration: none;
+            }
+
+                .header__top__right__language ul li a:hover {
+                    background: #f8f9fa;
+                }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            position: fixed;
+            top: 45px;
+            left: 0;
+            height: 100%;
+            overflow-y: auto;
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .profile {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+            .profile img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+            }
+
+        .infor-admin {
+            color: #fff;
+        }
+
+            .infor-admin h3 {
+                margin: 0;
+                font-size: 18px;
+            }
+
+            .infor-admin p {
+                margin: 5px 0 0;
+                font-size: 14px;
+                color: #adb5bd;
+            }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .sidebar nav ul li a {
+                display: flex;
+                align-items: center;
+                padding: 12px 20px;
+                color: #fff;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+                .sidebar nav ul li a:hover {
+                    background: rgba(255,255,255,0.1);
+                }
+
+                .sidebar nav ul li a i {
+                    margin-right: 10px;
+                    width: 20px;
+                    text-align: center;
+                }
+
+        .submenu {
+            background: rgba(0,0,0,0.2);
+            display: none;
+        }
+
+            .submenu.active {
+                display: block;
+            }
+
+            .submenu a {
+                padding-left: 50px !important;
+            }
+
+        /* Main content */
+        .main-content {
+            margin-left: 250px;
+            padding: 70px 20px 20px;
+            min-height: calc(100vh - 50px);
+            transition: 0.3s;
+        }
+
+        /* Footer */
+        .footer {
+            margin-left: 250px;
+            background: #fff;
+            padding: 40px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+            .footer h6 {
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+
+            .footer ul {
+                padding: 0;
+                list-style: none;
+            }
+
+                .footer ul li {
+                    margin-bottom: 10px;
+                }
+
+                    .footer ul li a {
+                        color: #6c757d;
+                        text-decoration: none;
+                    }
+
+                        .footer ul li a:hover {
+                            color: #0d6efd;
+                        }
+
+        .footer__widget form input {
+            border-radius: 4px 0 0 4px !important;
+        }
+
+        .footer__widget form button {
+            border-radius: 0 4px 4px 0 !important;
+        }
+
+        /* Toggle button for mobile */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            color: #000;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @@media (max-width: 991px) {
+            .sidebar {
+                left: -250px;
+            }
+
+                .sidebar.active {
+                    left: 0;
+                }
+
+            .main-content,
+            .footer {
+                margin-left: 0;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+
+            .header__top__right__social,
+            .header__top__right__language {
+                display: none;
+            }
+        }
+
+        @@media (max-width: 767px) {
+            .footer {
+                text-align: center;
+            }
+
+            .footer__widget {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Header -->
     <div class="header__top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
                     <div class="header__top__left">
                     </div>
                 </div>
@@ -47,8 +301,7 @@
             </div>
         </div>
     </div>
-    @* Slidebar *@
-<div class="container-row">
+
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="profile">
@@ -57,95 +310,216 @@
                 <h3>Admin</h3>
                 <p style="color: #fff;"><i class="fa-solid fa-circle" style="color: #63E6BE; font-size:10px"></i> Quản trị viên</p>
             </div>
-
         </div>
         <nav>
             <ul>
-                <li><a href="#"><i class="fa-solid fa-house"></i>&nbsp;&nbsp;Tổng quan</a></li>
-                <li><a href="#"><i class="fa-solid fa-chart-pie"></i>&nbsp;&nbsp;Thống kê</a></li>
+                <li><a href="#"><i class="fas fa-home"></i>Tổng quan</a></li>
+                <li><a href="#"><i class="fas fa-chart-pie"></i>Thống kê</a></li>
                 <li>
-                    <a href="#" class="toggle-submenu"><i class="fa-solid fa-users"></i>&nbsp;&nbsp;Quản lý nhân viên <i class="fa-solid fa-angle-right"></i></a>
+                    <a href="#" class="toggle-submenu">
+                        <i class="fas fa-users"></i>Quản lý nhân viên
+                        <i class="fas fa-angle-right float-end"></i>
+                    </a>
                     <ul class="submenu">
-                        <li><a href="#"><i class="fa-regular fa-calendar-check"></i>&nbsp;&nbsp;Quản lý chấm công</a></li>
-                        <li><a href="#"><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;&nbsp;Quản lý lương</a></li>
+                        <li><a href="#"><i class="far fa-calendar-check"></i>Quản lý chấm công</a></li>
+                        <li><a href="#"><i class="fas fa-hand-holding-dollar"></i>Quản lý lương</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa-solid fa-building-user"></i>&nbsp;&nbsp;Quản lý phòng ban</a></li>        
-                <li><a href="#"><i class="fa-solid fa-plane-departure"></i>&nbsp;&nbsp;Quản lý công tác</a></li>
-                <li><a href="#"><i class="fa-solid fa-file-contract"></i>&nbsp;&nbsp;Quản lý hợp đồng</a></li>
-                <li><a href="#"><i class="fa-regular fa-star"></i>&nbsp;&nbsp;Khen thưởng - Kỷ luật</a></li>
-                <li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;Tài khoản</a></li>
+                <li><a href="#"><i class="fas fa-building-user"></i>Quản lý phòng ban</a></li>
+                <li><a href="#"><i class="fas fa-plane-departure"></i>Quản lý công tác</a></li>
+                <li><a href="#"><i class="fas fa-file-contract"></i>Quản lý hợp đồng</a></li>
+                <li><a href="#"><i class="fas fa-star"></i>Khen thưởng - Kỷ luật</a></li>
+                <li><a href="#"><i class="fas fa-user"></i>Tài khoản</a></li>
             </ul>
         </nav>
     </div>
-    <div class="main-content">
-        <div>
-            @RenderBody()
-        </div>
-    </div>
-</div>
+
     <!-- Main Content -->
-   
-    @* Footer *@
-    <footer class="footer spad">
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="@Url.Action("Index","Home")"><img src="~/Assets/Images/Logo.jpg" alt="" style="height:50px;width:119px"></a>
+                        <div class="footer__about__logo mb-4">
+                            <img src="~/Assets/Images/Logo.jpg" alt="Logo" height="50">
                         </div>
-                        <ul>
-                            <li><i class="fa-solid fa-location-dot"></i> Địa chỉ:140 Lê Trọng Tấn, Phường Tây Thạnh , Tân Phú, TPHCM</li>
-                            <li><i class="fa-solid fa-phone-volume"></i> Điện thoại: 0912 387 121</li>
-                            <li><i class="fa-solid fa-envelope"></i> Email: qlns@gmail.com</li>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-location-dot me-2"></i>
+                                140 Lê Trọng Tấn, P. Tây Thạnh, Tân Phú, TPHCM
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-phone-volume me-2"></i>
+                                0912 387 121
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope me-2"></i>
+                                qlns@gmail.com
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <div class="footer__widget">
                         <h6>Liên kết</h6>
-                        <ul>
-                            <li><a href="#">Về chúng tôi</a></li>
-                            <li><a href="#">Chính sách bảo mật</a></li>
-                            <li><a href="#">Điều khoản</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Liên hệ</a></li>
-                            <li><a href="#">Sự đổi mới</a></li>
-                            <li><a href="#">Chứng thực</a></li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Về chúng tôi</a></li>
+                                    <li><a href="#">Chính sách</a></li>
+                                    <li><a href="#">Điều khoản</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Liên hệ</a></li>
+                                    <li><a href="#">Đổi mới</a></li>
+                                    <li><a href="#">Chứng thực</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4">
                     <div class="footer__widget">
-                        <h6>Cập nhật thông tin mới nhất về Nariz fastfood</h6>
-                        <p>Nhận thông tin mới nhất qua email về cửa hàng và những ưu đãi đặc biệt.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Điền email vào đây">
-                            <button type="submit" class="site-btn">Đăng ký</button>
+                        <h6>Nhận thông tin mới</h6>
+                        <p>Đăng ký để nhận thông tin và ưu đãi đặc biệt.</p>
+                        <form class="mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email của bạn">
+                                <button class="btn btn-primary" type="submit">Đăng ký</button>
+                            </div>
                         </form>
-                        <div class="footer__widget__social">
-                            <h6>Liên hệ</h6>
-                            <a href="http://www.facebook.com/narizmusicrl"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="http://www.instagram.com/narizmusic"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-square-pinterest"></i></a>
+                        <div class="mt-4">
+                            <h6>Kết nối với chúng tôi</h6>
+                            <div class="d-flex gap-3 justify-content-center justify-content-lg-start mt-2">
+                                <a href="#" class="text-secondary"><i class="fab fa-facebook fa-lg"></i></a>
+                                <a href="#" class="text-secondary"><i class="fab fa-instagram fa-lg"></i></a>
+                                <a href="#" class="text-secondary"><i class="fab fa-twitter fa-lg"></i></a>
+                                <a href="#" class="text-secondary"><i class="fab fa-pinterest fa-lg"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script>
-        document.querySelectorAll('.toggle-submenu').forEach(item => {
-            item.addEventListener('click', function (event) {
-                event.preventDefault();
-                const submenu = this.nextElementSibling;
-                submenu.classList.toggle('active');
+        // Toggle sidebar on mobile
+        document.querySelector('.sidebar-toggle').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
+        // Toggle submenu
+        document.querySelectorAll('.toggle-submenu').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                this.nextElementSibling.classList.toggle('active');
             });
         });
 
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth <= 991) {
+                const sidebar = document.querySelector('.sidebar');
+                const toggle = document.querySelector('.sidebar-toggle');
+                if (!sidebar.contains(e.target) && !toggle.contains(e.target) && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+
+        // Handle responsive layout
+        function handleResize() {
+            const width = window.innerWidth;
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const footer = document.querySelector('.footer');
+
+            if (width <= 991) {
+                sidebar.classList.remove('active');
+                mainContent.style.marginLeft = '0';
+                footer.style.marginLeft = '0';
+            } else {
+                sidebar.classList.add('active');
+                mainContent.style.marginLeft = '250px';
+                footer.style.marginLeft = '250px';
+            }
+        }
+
+        // Call on page load
+        handleResize();
+
+        // Call on window resize
+        window.addEventListener('resize', handleResize);
+
+        // Language dropdown
+        const langDropdown = document.querySelector('.header__top__right__language');
+        if (langDropdown) {
+            langDropdown.addEventListener('click', function (e) {
+                const dropdownMenu = this.querySelector('ul');
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+                e.stopPropagation();
+            });
+        }
+
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            const langDropdowns = document.querySelectorAll('.header__top__right__language ul');
+            langDropdowns.forEach(function (dropdown) {
+                if (!dropdown.parentElement.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+
+        // Active menu item
+        const currentLocation = location.href;
+        const menuItems = document.querySelectorAll('.sidebar nav ul li a');
+        const menuLength = menuItems.length;
+        for (let i = 0; i < menuLength; i++) {
+            if (menuItems[i].href === currentLocation) {
+                menuItems[i].classList.add('active');
+                // If in submenu, show parent menu
+                const parent = menuItems[i].closest('.submenu');
+                if (parent) {
+                    parent.classList.add('active');
+                    parent.previousElementSibling.classList.add('active');
+                }
+            }
+        }
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.querySelector('.scroll-top').style.display = 'block';
+            } else {
+                document.querySelector('.scroll-top').style.display = 'none';
+            }
+        };
+
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
     </script>
 </body>
 </html>

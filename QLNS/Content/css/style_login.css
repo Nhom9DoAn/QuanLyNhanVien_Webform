@@ -1,0 +1,308 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.wrapper {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 450px;
+    width: 100%;
+    margin: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.form-box h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+    .input-box input {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        outline: none;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+    }
+
+        .input-box input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1);
+        }
+
+    .input-box label {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        background: #fff;
+        padding: 0 5px;
+        font-size: 14px;
+        color: #666;
+        pointer-events: none;
+    }
+
+    .input-box.password-box {
+        position: relative;
+    }
+
+.password-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .password-box input {
+        width: 100%;
+        padding-right: 45px;
+    }
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+}
+
+    .toggle-password ion-icon {
+        font-size: 1.4rem;
+        color: #888;
+        transition: color 0.3s;
+    }
+
+    .toggle-password:hover ion-icon {
+        color: #555;
+    }
+
+
+
+.input-box input[type="password"],
+.input-box input[type="text"] {
+    padding-right: 45px; 
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -10px 0 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+}
+
+    .remember-me input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: #3498db;
+        cursor: pointer;
+    }
+
+    .remember-me label {
+        color: #666;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+button[type="button"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #3498db;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+    button[type="button"]:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+    }
+
+.error {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #e74c3c;
+}
+
+#loginMessage {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    text-align: center;
+    display: none;
+}
+
+.register-link {
+    margin-top: 25px;
+    text-align: center;
+}
+
+    .register-link a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+        .register-link a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-color-scheme: white) {
+    .wrapper {
+        background: #1a1a1a;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-box h2 {
+        color: #fff;
+    }
+
+    .input-box input {
+        background: #2d2d2d;
+        border-color: #404040;
+        color: #fff;
+    }
+
+    .input-box label {
+        background: #1a1a1a;
+        color: #ccc;
+    }
+
+    .toggle-password {
+        color: #ccc;
+    }
+
+        .toggle-password:hover {
+            color: #3498db;
+        }
+
+    .remember-me label {
+        color: #ccc;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .wrapper {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .wrapper {
+        max-width: 380px;
+        padding: 35px;
+    }
+
+    .form-box h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        max-width: 350px;
+        padding: 30px;
+        margin: 15px;
+    }
+
+    .form-box h2 {
+        font-size: 1.6em;
+        margin-bottom: 25px;
+    }
+
+    .input-box {
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+
+    .wrapper {
+        max-width: 100%;
+        margin: 10px;
+        padding: 25px;
+    }
+
+    .form-box h2 {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+    }
+
+    .remember-forgot {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        margin: -5px 0 15px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .wrapper {
+        padding: 20px;
+    }
+
+    .form-box h2 {
+        font-size: 1.2em;
+    }
+}

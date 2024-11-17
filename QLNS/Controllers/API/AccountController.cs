@@ -9,17 +9,58 @@ using QLNS.Models;
 
 namespace QLNS.Controllers.API
 {
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private QuanLyNhanSuDataContext db = new QuanLyNhanSuDataContext(
-               ConfigurationManager.ConnectionStrings["QL_NHANSU_UDTM1"].ConnectionString);
+               ConfigurationManager.ConnectionStrings["QL_NHANSU_UDTM"].ConnectionString);
 
+        // POST: api/Account/Login
+        [HttpPost]
+        [Route("Login")]
+        public IHttpActionResult Login([FromBody] AccountModel account)
+        {
+            try
+            {
+                // Kiểm tra đầu vào có hợp lệ không
+                if (account == null || string.IsNullOrEmpty(account.tenDN) || string.IsNullOrEmpty(account.matKhau))
+                {
+                    return BadRequest("Tên đăng nhập và mật khẩu không được để trống.");
+                }
+
+                // Tìm kiếm tài khoản trong database
+                var existingAccount = db.TaiKhoans
+                    .FirstOrDefault(a => a.TenDangNhap == account.tenDN && a.MatKhau == account.matKhau);
+
+                if (existingAccount == null)
+                {
+                    return Unauthorized();
+                }
+
+                bool isAdmin = existingAccount.VaiTro == "admin"; 
+
+                return Ok(new
+                {
+                    message = "Đăng nhập thành công",
+                    maNV = existingAccount.MaNV,
+                    tenDN = existingAccount.TenDangNhap,
+                    isAdmin = isAdmin,
+                    redirectTo = isAdmin ? "~/Admin/index" : "/user"
+                });
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        // Các phương thức khác giữ nguyên
         // GET: api/TaiKhoan
         public IHttpActionResult GetAccounts()
         {
             try
             {
-                var accounts = db.TaiKhoans.Select(t => new Account
+                var accounts = db.TaiKhoans.Select(t => new AccountModel
                 {
                     maNV = (int) t.MaNV,
                     tenDN = t.TenDangNhap,
@@ -40,7 +81,7 @@ namespace QLNS.Controllers.API
             {
                 var account = db.TaiKhoans
                     .Where(a => a.MaNV == id)
-                    .Select(t => new Account
+                    .Select(t => new AccountModel
                     {
                         maNV = (int) t.MaNV,
                         tenDN = t.TenDangNhap,
@@ -61,7 +102,7 @@ namespace QLNS.Controllers.API
         }
 
         // PUT: api/TaiKhoan/5
-        public IHttpActionResult PutAccount(int id, Account account)
+        public IHttpActionResult PutAccount(int id, AccountModel account)
         {
             try
             {

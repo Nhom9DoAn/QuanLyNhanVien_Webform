@@ -22,7 +22,7 @@ namespace QLNS.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_NHANSU_UDTM1")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_NHANSU_UDTM")]
 	public partial class QuanLyNhanSuDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -3005,6 +3005,8 @@ namespace QLNS.Models
 		
 		private string _DanToc;
 		
+		private System.Nullable<int> _MaChamCong;
+		
 		private EntitySet<ChamCong> _ChamCongs;
 		
 		private EntitySet<CongTac> _CongTacs;
@@ -3079,6 +3081,8 @@ namespace QLNS.Models
     partial void OnTinhTrangHonNhanChanged();
     partial void OnDanTocChanging(string value);
     partial void OnDanTocChanged();
+    partial void OnMaChamCongChanging(System.Nullable<int> value);
+    partial void OnMaChamCongChanged();
     #endregion
 		
 		public NhanVien()
@@ -3471,6 +3475,26 @@ namespace QLNS.Models
 					this._DanToc = value;
 					this.SendPropertyChanged("DanToc");
 					this.OnDanTocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChamCong", DbType="Int")]
+		public System.Nullable<int> MaChamCong
+		{
+			get
+			{
+				return this._MaChamCong;
+			}
+			set
+			{
+				if ((this._MaChamCong != value))
+				{
+					this.OnMaChamCongChanging(value);
+					this.SendPropertyChanging();
+					this._MaChamCong = value;
+					this.SendPropertyChanged("MaChamCong");
+					this.OnMaChamCongChanged();
 				}
 			}
 		}
@@ -4172,11 +4196,21 @@ namespace QLNS.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private System.Nullable<int> _MaNV;
+		
 		private string _TenDangNhap;
 		
 		private string _MatKhau;
 		
-		private System.Nullable<int> _MaNV;
+		private string _Email;
+		
+		private string _VaiTro;
+		
+		private string _TrangThai;
+		
+		private System.Nullable<System.DateTime> _NgayTao;
+		
+		private System.Nullable<System.DateTime> _NgayCapNhat;
 		
 		private EntityRef<NhanVien> _NhanVien;
 		
@@ -4184,58 +4218,28 @@ namespace QLNS.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnMaNVChanging(System.Nullable<int> value);
+    partial void OnMaNVChanged();
     partial void OnTenDangNhapChanging(string value);
     partial void OnTenDangNhapChanged();
     partial void OnMatKhauChanging(string value);
     partial void OnMatKhauChanged();
-    partial void OnMaNVChanging(System.Nullable<int> value);
-    partial void OnMaNVChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnVaiTroChanging(string value);
+    partial void OnVaiTroChanged();
+    partial void OnTrangThaiChanging(string value);
+    partial void OnTrangThaiChanged();
+    partial void OnNgayTaoChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayTaoChanged();
+    partial void OnNgayCapNhatChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayCapNhatChanged();
     #endregion
 		
 		public TaiKhoan()
 		{
 			this._NhanVien = default(EntityRef<NhanVien>);
 			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDangNhap", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string TenDangNhap
-		{
-			get
-			{
-				return this._TenDangNhap;
-			}
-			set
-			{
-				if ((this._TenDangNhap != value))
-				{
-					this.OnTenDangNhapChanging(value);
-					this.SendPropertyChanging();
-					this._TenDangNhap = value;
-					this.SendPropertyChanged("TenDangNhap");
-					this.OnTenDangNhapChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string MatKhau
-		{
-			get
-			{
-				return this._MatKhau;
-			}
-			set
-			{
-				if ((this._MatKhau != value))
-				{
-					this.OnMatKhauChanging(value);
-					this.SendPropertyChanging();
-					this._MatKhau = value;
-					this.SendPropertyChanged("MatKhau");
-					this.OnMatKhauChanged();
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNV", DbType="Int")]
@@ -4258,6 +4262,146 @@ namespace QLNS.Models
 					this._MaNV = value;
 					this.SendPropertyChanged("MaNV");
 					this.OnMaNVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDangNhap", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string TenDangNhap
+		{
+			get
+			{
+				return this._TenDangNhap;
+			}
+			set
+			{
+				if ((this._TenDangNhap != value))
+				{
+					this.OnTenDangNhapChanging(value);
+					this.SendPropertyChanging();
+					this._TenDangNhap = value;
+					this.SendPropertyChanged("TenDangNhap");
+					this.OnTenDangNhapChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string MatKhau
+		{
+			get
+			{
+				return this._MatKhau;
+			}
+			set
+			{
+				if ((this._MatKhau != value))
+				{
+					this.OnMatKhauChanging(value);
+					this.SendPropertyChanging();
+					this._MatKhau = value;
+					this.SendPropertyChanged("MatKhau");
+					this.OnMatKhauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VaiTro", DbType="NVarChar(50)")]
+		public string VaiTro
+		{
+			get
+			{
+				return this._VaiTro;
+			}
+			set
+			{
+				if ((this._VaiTro != value))
+				{
+					this.OnVaiTroChanging(value);
+					this.SendPropertyChanging();
+					this._VaiTro = value;
+					this.SendPropertyChanged("VaiTro");
+					this.OnVaiTroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="NVarChar(20)")]
+		public string TrangThai
+		{
+			get
+			{
+				return this._TrangThai;
+			}
+			set
+			{
+				if ((this._TrangThai != value))
+				{
+					this.OnTrangThaiChanging(value);
+					this.SendPropertyChanging();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayTao
+		{
+			get
+			{
+				return this._NgayTao;
+			}
+			set
+			{
+				if ((this._NgayTao != value))
+				{
+					this.OnNgayTaoChanging(value);
+					this.SendPropertyChanging();
+					this._NgayTao = value;
+					this.SendPropertyChanged("NgayTao");
+					this.OnNgayTaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayCapNhat", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayCapNhat
+		{
+			get
+			{
+				return this._NgayCapNhat;
+			}
+			set
+			{
+				if ((this._NgayCapNhat != value))
+				{
+					this.OnNgayCapNhatChanging(value);
+					this.SendPropertyChanging();
+					this._NgayCapNhat = value;
+					this.SendPropertyChanged("NgayCapNhat");
+					this.OnNgayCapNhatChanged();
 				}
 			}
 		}

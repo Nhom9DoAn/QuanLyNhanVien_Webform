@@ -1,52 +1,58 @@
 ﻿@{
     Layout = null;
 }
-<link href="~/Content/css/style_form.css" rel="stylesheet" type="text/css" />
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-
-<div class="content">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Hệ Thống Quản Lý Nhân Sự</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/style_login.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
     <div class="wrapper">
-        <div class="form-box login">
-            <h2>ĐĂNG NHẬP</h2>
-            <form action="/TaiKhoan/DangNhap" method="post">
+        <div class="form-box">
+            <h2>ĐĂNG NHẬP HỆ THỐNG</h2>
+            <form id="loginForm">
                 <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person-circle-outline"></ion-icon>
-                    </span>
-                    @Html.TextBox("TenDN")
-                    <div class="error" style="color: red; font-weight: 800;">
-                        @ViewData["loi1"]
-                    </div>
-
+                    <input type="text" id="TenDN" name="TenDN" required autocomplete="username" />
                     <label>Tên đăng nhập</label>
+                    <div class="error" id="errorTenDN"></div>
                 </div>
                 <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="lock-closed"></ion-icon>
-                    </span>
-                    @Html.Password("MatKhau")
-                    <div class="error" style="color: red; font-weight: 800;">
-                        @ViewData["loi2"]
+                    <div class="password-box">
+                        <input type="password" id="MatKhau" name="MatKhau" required autocomplete="current-password" />
+                        <label>Mật khẩu</label>
+                        <button class="toggle-password" onclick="togglePassword()">
+                            <ion-icon name="eye-outline" id="toggleIcon"></ion-icon>
+                        </button>
                     </div>
-                    <label>Mật Khẩu</label>
+                    <div class="error" id="errorMatKhau"></div>
                 </div>
-                <center>
-                    <button type="submit">Đăng Nhập</button>
-                </center>
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Nhớ mật khẩu</label>
+                    </div>
+                </div>
+                <button type="button" onclick="login()">ĐĂNG NHẬP</button>
             </form>
-            <div style="text-align:center;padding-top:5px;padding-bottom:5px; font-size:18px;"><a href="@Url.Action("DangKy","TaiKhoan")"><i class="fa fa-user-plus"> Chưa có tài khoản? Hãy đăng ký.</i></a></div>
-            <h4 style="color:red; text-align:center; font-size:18px; font-weight:700; padding-top:5px;padding-bottom:5px">@ViewBag.Thongbao</h4>
+
+            <div id="loginMessage"></div>
+            <div class="register-link">
+                <a href="@Url.Action("DangKy","TaiKhoan")">
+                    <ion-icon name="person-add-outline"></ion-icon>
+                    Chưa có tài khoản? Đăng ký ngay
+                </a>
+            </div>
         </div>
     </div>
 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/Content/js/login.js"></script>
 
-</div>
-
-
-
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-
-
+</body>
+</html>

@@ -1,0 +1,215 @@
+﻿/* Reset và font chủ đạo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    line-height: 1.6;
+}
+
+/* Header styles */
+.swagger-section #header {
+    background-color: #2c3e50;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+    .swagger-section #header #logo {
+        font-size: 1.5em;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+        .swagger-section #header #logo:hover {
+            opacity: 0.9;
+        }
+
+/* Main container */
+.swagger-section .swagger-ui-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* API Title and description */
+.swagger-section .info_title {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 20px 0 10px;
+}
+
+.swagger-section .info_description {
+    color: #6c757d;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Operation blocks */
+.swagger-section .endpoints {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.swagger-section .endpoint .operation {
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+    .swagger-section .endpoint .operation:last-child {
+        border-bottom: none;
+    }
+
+/* HTTP Methods - với màu sắc hiện đại hơn */
+.swagger-section .get {
+    background-color: #61affe !important;
+    border-color: #61affe !important;
+}
+
+.swagger-section .post {
+    background-color: #49cc90 !important;
+    border-color: #49cc90 !important;
+}
+
+.swagger-section .put {
+    background-color: #fca130 !important;
+    border-color: #fca130 !important;
+}
+
+.swagger-section .delete {
+    background-color: #f93e3e !important;
+    border-color: #f93e3e !important;
+}
+
+/* Operation headers với animation */
+.swagger-section .operation .heading {
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.02);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .swagger-section .operation .heading:hover {
+        background: rgba(0,0,0,0.04);
+    }
+
+/* Parameters table */
+.swagger-section table.operation-params {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.swagger-section .operation-params thead tr th {
+    background: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.swagger-section .operation-params tbody tr td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Input fields */
+.swagger-section input[type="text"],
+.swagger-section textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin: 5px 0;
+    transition: border-color 0.3s ease;
+}
+
+    .swagger-section input[type="text"]:focus,
+    .swagger-section textarea:focus {
+        border-color: #80bdff;
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+
+/* Buttons */
+.swagger-section .try-it {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .swagger-section .try-it:hover {
+        background: #0056b3;
+        transform: translateY(-1px);
+    }
+
+/* Response section */
+.swagger-section .response_body {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 10px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.swagger-section .content {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .swagger-section .swagger-ui-wrap {
+        padding: 10px;
+    }
+
+    .swagger-section .info_title {
+        font-size: 1.8em;
+    }
+
+    .swagger-section table.operation-params {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }

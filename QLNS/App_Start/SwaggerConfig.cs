@@ -1,53 +1,36 @@
 ﻿using System.Web.Http;
 using WebActivatorEx;
-using QLNS;
 using Swashbuckle.Application;
-using System;
-using System.IO;
-using System.Collections.Generic;
+using System.Reflection;
 
-[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
+[assembly: PreApplicationStartMethod(typeof(QLNS.SwaggerConfig), "Register")]
 namespace QLNS
 {
     public class SwaggerConfig
     {
         public static void Register()
         {
-            var thisAssembly = typeof(SwaggerConfig).Assembly;
+            var thisAssembly = Assembly.GetExecutingAssembly();
             GlobalConfiguration.Configuration
                 .EnableSwagger(c =>
                 {
-                    // Thông tin cơ bản
-                    c.SingleApiVersion("v1", "QLNS API Documentation")
-                        .Description("API Quản Lý Nhân Sự");
-                        
+                    c.SingleApiVersion("v1", "QLNS API Documentation");
 
-                    // Nhóm API theo HTTP Method
-                    c.GroupActionsBy(apiDesc => apiDesc.HttpMethod.ToString());
-
-                    // Tùy chỉnh operation sorting
-                    c.OrderActionGroupsBy(new DescendingAlphabeticComparer());
-
+                    // Cấu hình mô tả API
                     c.DescribeAllEnumsAsStrings();
-
+                    c.IncludeXmlComments(string.Format(@"{0}\bin\QLNS.XML",
+                        System.AppDomain.CurrentDomain.BaseDirectory));
                 })
                 .EnableSwaggerUi(c =>
                 {
-                    // Tùy chỉnh UI
-                    c.DocumentTitle("QLNS API Documentation");
-                    c.DocExpansion(DocExpansion.List);
+                    // Sử dụng custom index.html
+                    c.CustomAsset("index", thisAssembly, "QLNS.SwaggerUI.index.html");
 
-                    // Thêm CSS tùy chỉnh
-                    c.InjectStylesheet(thisAssembly, "QLNS.Content.swagger-custom.css");
+                    // CSS và JS files
+                    c.InjectStylesheet(thisAssembly, "QLNS.SwaggerUI.swagger-ui.css");
+                    c.InjectJavaScript(thisAssembly, "QLNS.SwaggerUI.swagger-ui-bundle.js");
+                    c.InjectJavaScript(thisAssembly, "QLNS.SwaggerUI.swagger-ui-standalone-preset.js");
                 });
-        }
-    }
-
-    public class DescendingAlphabeticComparer : IComparer<string>
-    {
-        public int Compare(string x, string y)
-        {
-            return string.Compare(y, x);
         }
     }
 }

@@ -24,12 +24,12 @@ namespace QLNS.Controllers.API
                     MaCV = nv.MaCV ?? 0,
                     HoTen = nv.HoTen,
                     GioiTinh = nv.GioiTinh,
-                    NgaySinh = nv.NgaySinh ?? DateTime.MinValue,
+                    NgaySinh = nv.NgaySinh ?? DateTime.Now,
                     CCCD = nv.CCCD,
                     Email = nv.Email,
                     DienThoai = nv.DienThoai,
                     DiaChi = nv.DiaChi,
-                    NgayVaoLam = nv.NgayVaoLam ?? DateTime.MinValue,
+                    NgayVaoLam = nv.NgayVaoLam ?? DateTime.Now,
                     LuongCB = nv.LuongCB ?? 0,
                     TrangThai = nv.TrangThai,
                     SoYeuLyLich = nv.SoYeuLyLich,
@@ -63,12 +63,12 @@ namespace QLNS.Controllers.API
                         MaCV = nv.MaCV ?? 0,
                         HoTen = nv.HoTen,
                         GioiTinh = nv.GioiTinh,
-                        NgaySinh = nv.NgaySinh ?? DateTime.MinValue,
+                        NgaySinh = nv.NgaySinh ?? DateTime.Now,
                         CCCD = nv.CCCD,
                         Email = nv.Email,
                         DienThoai = nv.DienThoai,
                         DiaChi = nv.DiaChi,
-                        NgayVaoLam = nv.NgayVaoLam ?? DateTime.MinValue,
+                        NgayVaoLam = nv.NgayVaoLam ?? DateTime.Now,
                         LuongCB = nv.LuongCB ?? 0,
                         TrangThai = nv.TrangThai,
                         SoYeuLyLich = nv.SoYeuLyLich,
@@ -228,6 +228,39 @@ namespace QLNS.Controllers.API
                 db.SubmitChanges();
 
                 return Ok(nhanVien);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("Count")]
+        public IHttpActionResult GetCount()
+        {
+            try
+            {
+                int count = db.NhanViens.Count();
+                return Ok(count);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("Count/NghiViec")]
+        public IHttpActionResult GetNghiPhepCount()
+        {
+            try
+            {
+                int count = db.NhanViens.Count(nv =>
+                    nv.TrangThai == "Đã nghỉ"
+                );
+
+                return Ok(count);
             }
             catch (Exception ex)
             {

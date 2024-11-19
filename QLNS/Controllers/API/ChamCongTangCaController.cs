@@ -485,6 +485,8 @@ namespace QLNS.Controllers.API
             }
         }
 
+       
+
         // GET: api/NghiPhepThuongPhat/ThuongPhat
         [HttpGet]
         [Route("ThuongPhat")]

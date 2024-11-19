@@ -147,6 +147,21 @@ namespace QLNS.Controllers.API
             }
         }
 
+        [HttpGet]
+        [Route("Count")]
+        public IHttpActionResult GetCount()
+        {
+            try
+            {
+                int count = db.PhongBans.Count();
+                return Ok(count);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

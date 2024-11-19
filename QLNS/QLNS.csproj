@@ -354,6 +354,7 @@
     <Content Include="Content\css\style_login.css" />
     <Content Include="Content\css\style_swaggercustom.css" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\DashBroad.js" />
     <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.slicknav.js" />
     <Content Include="Content\js\login.js" />
@@ -556,6 +557,7 @@
     <EmbeddedResource Include="SwaggerUI\swagger-ui-standalone-preset.js.map" />
     <EmbeddedResource Include="SwaggerUI\swagger-ui.css.map" />
     <EmbeddedResource Include="SwaggerUI\swagger-ui.js.map" />
+    <Content Include="Views\Admin\DanhSachPhongBan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

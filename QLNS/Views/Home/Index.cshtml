@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<QLNS.Models.TuyenDung>
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
@@ -40,14 +42,26 @@
                         <div class="jobs__item set-bg" style="background-image: url('https://static.careerlink.vn/image/a3653e79345ce64e714d7622a85b2e4c');">
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </section>
 
     <div class="container-company ">
-        <div class="company-card">
+        @foreach (var job in Model)
+        {
+            <div class="company-card">
+                <img src="https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png" alt="Company Logo" class="company-logo">
+                <h2>@job.TenViTri</h2> <!-- Tên công việc -->
+                <div class="tags">
+                    <span>@job.YeuCau</span> <!-- Kinh nghiệm yêu cầu -->
+                </div>
+                <p class="location">@job.TrangThai</p> <!-- Địa điểm -->
+                <p class="jobs-count">Số lượng: @job.SoLuong</p> <!-- Số lượng -->
+            </div>
+            }
+        @*<div class="company-card">
             <img src="https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png" alt="Grab Logo" class="company-logo">
             <h2>Grab (Vietnam) Ltd.</h2>
             <div class="tags">
@@ -130,7 +144,7 @@
             </div>
             <p class="location">Ho Chi Minh - Ha Noi</p>
             <p class="jobs-count">9 Việc làm</p>
-        </div>
+        </div>*@
 
     </div>
     @* Footer *@

@@ -13,5 +13,9 @@ namespace QLNS.Controllers
         {
             return View();
         }
+        public ActionResult ThongKe()
+        {
+            return View("ThongKeView");
+        }
     }
 }

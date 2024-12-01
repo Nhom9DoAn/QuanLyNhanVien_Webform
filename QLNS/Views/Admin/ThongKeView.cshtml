@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Thống Kê Nhân Viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="row g-4">
+        <!-- Cột lớn 1, chứa 2 cột nhỏ -->
+        <div class="col-12 col-md-6">
+            <div class="row g-4">
+                <!-- Cột nhỏ 1 -->
+                <div class="col-12 col-md-6">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h5 class="card-title mb-0">Nhân Viên Theo Phòng Ban</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="pieChartPhongBan" class="w-100"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột nhỏ 2 -->
+                <div class="col-12 col-md-6">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-header bg-success text-white text-center">
+                            <h5 class="card-title mb-0">Nhân Viên Theo Giới Tính</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="pieChartGioiTinh" class="w-100"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột nhỏ 3 -->
+                <div class="col-12 col-md-6">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-header bg-info text-white text-center">
+                            <h5 class="card-title mb-0">Nhân Viên Nghỉ Phép</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="areaChartNghiPhep" class="w-100"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột nhỏ 4 -->
+                <div class="col-12 col-md-6">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header bg-warning text-white text-center">
+                            <h5 class="card-title mb-0">Nhân Viên Theo Chức Vụ</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="barChartChucVu" class="w-100"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cột lớn 2 -->
+        <div class="col-12 col-md-6">
+            <div class="col-12">
+                <h2 class="text-center mb-4 fw-bold text-primary">Thống Kê Nhân Viên</h2>
+            </div>
+            <div>hi</div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="~/Content/js/ChartDataDashBoard.js"></script>

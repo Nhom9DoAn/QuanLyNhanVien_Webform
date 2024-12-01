@@ -73,11 +73,16 @@
                     fill: true,
                     borderColor: '#36A2EB',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    tension: 0.1
+                    tension: 1
                 }]
             },
             options: {
-                responsive: true
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                    }
+                }
             }
         });
 

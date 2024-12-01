@@ -268,6 +268,105 @@ namespace QLNS.Controllers.API
             }
         }
 
+        [HttpGet]
+        [Route("ThongKeTheoPhongBan")]
+        public IHttpActionResult ThongKeTheoPhongBan()
+        {
+            try
+            {
+                var data = db.NhanViens
+                    .GroupBy(nv => nv.PhongBan.TenPB)
+                    .Select(g => new
+                    {
+                        TenPhongBan = g.Key,
+                        SoLuong = g.Count()
+                    })
+                    .ToList();
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("ThongKeTheoGioiTinh")]
+        public IHttpActionResult ThongKeTheoGioiTinh()
+        {
+            try
+            {
+                var data = db.NhanViens
+                    .GroupBy(nv => nv.GioiTinh)
+                    .Select(g => new
+                    {
+                        GioiTinh = g.Key,
+                        SoLuong = g.Count()
+                    })
+                    .ToList();
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("NhanVienTheoChucVu")]
+        public IHttpActionResult GetNhanVienTheoChucVu()
+        {
+            try
+            {
+                var chucVuStats = db.NhanViens
+                    .Where(nv => nv.MaCV.HasValue)
+                    .GroupBy(nv => nv.MaCV)
+                    .Join(db.ChucVus,
+                        nv => nv.Key,
+                        cv => cv.MaCV,
+                        (nv, cv) => new
+                        {
+                            TenCV = cv.TenCV,
+                            SoLuong = nv.Count()
+                        })
+                    .ToList();
+
+                return Ok(chucVuStats);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("NhanVienNghiPhepTheoThang")]
+        public IHttpActionResult GetNhanVienNghiPhepTheoThang()
+        {
+            try
+            {
+                var nghiPhepData = db.NhanViens
+                    .Where(nv => nv.TrangThai == "Đã nghỉ")
+                    .GroupBy(nv => nv.NgayVaoLam.Value.Month)
+                    .Select(group => new
+                    {
+                        Thang = group.Key,
+                        SoLuongNghiPhep = group.Count()
+                    })
+                    .OrderBy(x => x.Thang)
+                    .ToList();
+
+                return Ok(nghiPhepData);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

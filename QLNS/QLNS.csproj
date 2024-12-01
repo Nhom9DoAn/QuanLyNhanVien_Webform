@@ -358,6 +358,7 @@
     <Content Include="Content\js\DashBroad.js" />
     <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.slicknav.js" />
+    <Content Include="Content\js\LoadPhongBan.js" />
     <Content Include="Content\js\login.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\Site.css" />
@@ -560,6 +561,7 @@
     <EmbeddedResource Include="SwaggerUI\swagger-ui.js.map" />
     <Content Include="Views\Admin\DanhSachPhongBan.cshtml" />
     <Content Include="Views\Admin\ThongKeView.cshtml" />
+    <Content Include="Views\Admin\PhongBanView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

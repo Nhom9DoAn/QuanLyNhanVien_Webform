@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "PhongBanView";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>PhongBanView</h2>
+
+<p>
+    <a href="/PhongBan/Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><input type="checkbox" id="selectAll" /></th>
+            <th>Mã PB</th>
+            <th>Tên PB</th>
+            <th>Địa Chỉ</th>
+            <th>SĐT PB</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody id="phongBanTableBody">
+    </tbody>
+</table>
+
+<script src="~/Content/js/LoadPhongBan.js"></script>

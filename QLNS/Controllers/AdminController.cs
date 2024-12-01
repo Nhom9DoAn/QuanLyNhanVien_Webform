@@ -17,5 +17,9 @@ namespace QLNS.Controllers
         {
             return View("ThongKeView");
         }
+        public ActionResult PhongBan()
+        {
+            return View("PhongBanView");
+        }
     }
 }
